@@ -56,19 +56,22 @@ if (searchTerm == "search/movie" || searchTerm == "search/tv"){
 	 			newHTML += "</div>";
 	 		}
 	 			$("#poster-grid").html(newHTML);
+	 			$("#page-heading").html(searchValue);
 			 	// console.log(searchResult);
 		 })
 }else if(searchTerm == "search/person"){
 		$.getJSON(inputURL, function(searchResult){
 		 	var newHTML = '';
 		 	 	for(var i= 0; i < searchResult.results.length; i++){
-	 		var profile = imagePath + "w300" + searchResult.results[i].profile_path;
-
+	 		var profilePic = imagePath + "w300" + searchResult.results[i].profile_path;
+	 		var profileName =  searchResult.results[i].name;
 	 			newHTML += "<div class='col-sm-3'>";
-	 			newHTML += "<img src='" + profile + "'>";
+	 			newHTML += profileName;
+	 			newHTML += "<img src='" + profilePic + "'>";
 	 			newHTML += "</div>";
 	 		}
 	 			$("#poster-grid").html(newHTML);
+	 			$("#page-heading").html(searchValue);
 			 	console.log(searchResult);
 		 })
 
