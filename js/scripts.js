@@ -3,6 +3,7 @@ $(document).ready(function() {
 	 var baseURL = "https://api.themoviedb.org/3/";
 	 var apiKey = "?api_key=29a7409539eac140137d9aa6c20ab279";
 	 var configURL = baseURL + "configuration" + apiKey;
+	 var searchTerm;
 	 var imagePath;
 
 
@@ -29,11 +30,21 @@ $(document).ready(function() {
 	 });
 
 
-		 $("#searchForm").submit(function() {
+	$("#searchForm").submit(function() {
+		 var searchValue = $("select").val();
+		 console.log(searchValue);
+		 if (searchValue == "Movie"){
+		 	searchTerm = "search/movie";
+		 }else if (searchValue == "TV"){
+		 	searchTerm = "search/tv";
+		 }else if (searchValue == "Person"){
+		 	searchTerm = "search/person";
+		 }
 		 	event.preventDefault();
 		 	var input = $("#searchBox").val();
-		 	var inputURL = baseURL + "search/multi" + apiKey + "&query=" + input;
-		 	// console.log(inputURL);
+		 	var inputURL = baseURL + searchTerm + apiKey + "&query=" + input;
+		 	console.log(inputURL);
+
 
 		 $.getJSON(inputURL, function(searchResult){
 		 	var newHTML = '';
@@ -50,9 +61,6 @@ $(document).ready(function() {
 		 	
 
 });
-
-
-
 
 
 
