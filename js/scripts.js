@@ -5,13 +5,13 @@ $(document).ready(function() {
 	 var configURL = baseURL + "configuration" + apiKey;
 	 var searchTerm;
 	 var imagePath;
-
+	 // console.log(configURL);
 
 
 
 	 	$.getJSON(configURL, function(configData){
 	 		imagePath = configData.images.base_url;
-	 		// console.log(imagePath);
+	 		console.log(imagePath);
 
 	 	})
 	 var nowPlaying = baseURL + "movie/now_playing" + apiKey;
@@ -26,13 +26,13 @@ $(document).ready(function() {
 
 	 	}
 	 	$("#poster-grid").html(newHTML);
-
+	 	
 	 });
 
 
 	$("#searchForm").submit(function() {
 		 var searchValue = $("select").val();
-		 console.log(searchValue);
+		 // console.log(searchValue);
 		 if (searchValue == "Movie"){
 		 	searchTerm = "search/movie";
 		 }else if (searchValue == "TV"){
@@ -43,20 +43,37 @@ $(document).ready(function() {
 		 	event.preventDefault();
 		 	var input = $("#searchBox").val();
 		 	var inputURL = baseURL + searchTerm + apiKey + "&query=" + input;
-		 	console.log(inputURL);
+		 	
 
-
+if (searchTerm == "search/movie" || searchTerm == "search/tv"){
 		 $.getJSON(inputURL, function(searchResult){
 		 	var newHTML = '';
 		 	 	for(var i= 0; i < searchResult.results.length; i++){
 	 		var poster = imagePath + "w300" + searchResult.results[i].poster_path;
+
 	 			newHTML += "<div class='col-sm-3'>";
 	 			newHTML += "<img src='" + poster + "'>";
 	 			newHTML += "</div>";
 	 		}
 	 			$("#poster-grid").html(newHTML);
-
+			 	// console.log(searchResult);
 		 })
+}else if(searchTerm == "search/person"){
+		$.getJSON(inputURL, function(searchResult){
+		 	var newHTML = '';
+		 	 	for(var i= 0; i < searchResult.results.length; i++){
+	 		var profile = imagePath + "w300" + searchResult.results[i].profile_path;
+
+	 			newHTML += "<div class='col-sm-3'>";
+	 			newHTML += "<img src='" + profile + "'>";
+	 			newHTML += "</div>";
+	 		}
+	 			$("#poster-grid").html(newHTML);
+			 	console.log(searchResult);
+		 })
+
+
+}
 
 		 	
 
