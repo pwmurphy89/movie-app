@@ -12,3 +12,12 @@
   border-radius: 20px;
   font-family: monospace;
 }
+
+/* line 17, ../compass/sass/style.scss */
+#searchForm input {
+  font-size: 20px;
+}
+/* line 20, ../compass/sass/style.scss */
+#searchForm select {
+  width: 10%;
+}

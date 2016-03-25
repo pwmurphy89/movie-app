@@ -11,43 +11,44 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12 text-center">
+				<h1>---------Movie Page----------</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12 text-right">
 				<form id="searchForm">
-					<input type="text" id="searchBox" placeholder="Search for..">
+					<input type="text" id="searchBox" class="typeahead" placeholder="Search for..">
 					<input type='submit' class="btn btn-primary" value="search">
 					<select>
 						<option value="Movie">Movie</option>
 						<option value="TV">TV Show</option>
 						<option value="Person">Person</option>
+						<option value="All">All</option>
 					</select>
 				</form>
 			</div>
 		</div>
 
 		<div class="row">
-			<div id="page-heading" class="col-sm-12 text-center">
+			<div id="page-heading" class="col-sm-6 text-center col-sm-offset-3">
 				Now Playing
 			</div>
 		</div>
 
 		<div class="row">
+			<div id="button-grid" class="col-sm-12">
+			</div>
+		</div>
+		
+		<div class="row">
 			<div id="poster-grid" class="col-sm-12">
-				<div class="col-sm-3">
-				A Move Poster here.
-				</div>
-				<div class="col-sm-3">
-				A Move Poster here.
-				</div>
-				<div class="col-sm-3">
-				A Move Poster here.
-				</div>
-				<div class="col-sm-3">
-				A Move Poster here.
-				</div>
+
 			</div>
 		</div>
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.min.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
 </body>
 </html>
