@@ -1,3 +1,9 @@
+//Need to add isotope
+//Need to set genre class names
+
+
+
+
 $(document).ready(function() {
 
 	 var baseURL = "https://api.themoviedb.org/3/";
@@ -41,8 +47,13 @@ $(document).ready(function() {
 	 	$.getJSON(nowPlaying, function(movieData){
 	 	var newHTML = '';
 	 	for(var i= 0; i < movieData.results.length; i++){
+	 		var genreName;
 	 		var currentPoster = imagePath + "w300" + movieData.results[i].poster_path;
-	 			newHTML += "<div class='col-sm-3'>";
+	 		for(var j = 0; i < movieData.results[i].genre_ids.length;i++){
+	 			var safeGenreName = genreArray[movieData.results[i].genre_ids[j]].replace(/ /g, "");
+	 			genreName += safeGenreName;
+	 		}
+	 			newHTML += "<div class='col-sm-3 " + genreName + "'>";
 	 			newHTML += "<img src='" + currentPoster + "'>";
 	 			newHTML += "</div>";
 
