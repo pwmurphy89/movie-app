@@ -4,3 +4,21 @@
 		height: 382px;
 	}
 }
+
+#page-heading {
+    border: 1px solid black;
+    font-size: 32px;
+    background-color: beige;
+    border-radius: 20px;
+    font-family: monospace;
+}
+
+#searchForm {
+	input {
+		font-size: 20px;
+	}
+	select {
+		width: 10%;
+	}
+
+}
